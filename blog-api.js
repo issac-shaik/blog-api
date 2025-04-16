@@ -1,11 +1,12 @@
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 
 app.use(express.json());
 
-const db = new sqlite3.Database('./blog.db', (err) => {
+const db = new sqlite3.Database('./blog.db',(err) => {
   if (err) return console.error(err.message);
   console.log('Connected to SQLite database.');
 });
